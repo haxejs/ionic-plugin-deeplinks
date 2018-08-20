@@ -8,6 +8,15 @@
   _handlers = [[NSMutableArray alloc] init];
 }
 
+/* NOTE: override */
+- (void)handleOpenURL:(NSNotification*)notification
+{
+    NSURL* url = [notification object];
+    
+    if ([url isKindOfClass:[NSURL class]]) {
+        [self handleLink:url];
+    }
+}
 /* ------------------------------------------------------------- */
 
 - (void)onAppTerminate {
